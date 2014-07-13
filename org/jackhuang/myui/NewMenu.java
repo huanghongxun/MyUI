@@ -52,23 +52,10 @@ import com.google.common.collect.Lists;
 
 @SideOnly(Side.CLIENT)
 public class NewMenu extends GuiScreen {
-	/** The RNG used by the Main Menu Screen. */
 	private static final Random rand = new Random();
-
-	/** Counts the number of screen updates. */
 	private float updateCounter;
-
-	/** The splash message. */
-	// private String splashText = "missingno";
 	private GuiButton buttonResetDemo;
-
-	/** Timer used to rotate the panorama, increases every tick. */
 	private int panoramaTimer;
-
-	/**
-	 * Texture allocated for the current viewport of the main menu's panorama
-	 * background.
-	 */
 	private DynamicTexture viewportTexture;
 	private boolean field_96141_q = true;
 	private static boolean field_96140_r;
@@ -80,8 +67,6 @@ public class NewMenu extends GuiScreen {
 			"texts/splashes.txt");
 	private static final ResourceLocation minecraftTitleTextures = new ResourceLocation(
 			"textures/gui/title/minecraft.png");
-
-	/** An array of all the paths to the panorama pictures. */
 	private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {
 			new ResourceLocation("textures/gui/title/background/panorama_0.png"),
 			new ResourceLocation("textures/gui/title/background/panorama_1.png"),
@@ -98,19 +83,12 @@ public class NewMenu extends GuiScreen {
 	private int field_92019_w;
 	private ResourceLocation field_110351_G;
 	private GuiButton minecraftRealmsButton;
-
 	private GuiButton fmlModButton = null;
-
-	/**
-	 * Customized buttons
-	 */
 	private GuiButton server1, server2, server3, website;
 	private LoadServerThread thread;
-
 	public NewMenu() {
 		BufferedReader bufferedreader = null;
 		String s;
-
 		try {
 			ArrayList arraylist = new ArrayList();
 			bufferedreader = new BufferedReader(new InputStreamReader(Minecraft
@@ -124,12 +102,6 @@ public class NewMenu extends GuiScreen {
 					arraylist.add(s);
 				}
 			}
-
-			/*
-			 * do { this.splashText =
-			 * (String)arraylist.get(rand.nextInt(arraylist.size())); } while
-			 * (this.splashText.hashCode() == 125780783);
-			 */
 		} catch (IOException ioexception) {
 			;
 		} finally {
@@ -146,70 +118,24 @@ public class NewMenu extends GuiScreen {
 		this.field_92025_p = "";
 		String s1 = System.getProperty("os_architecture");
 		s = System.getProperty("java_version");
-
-		/*
-		 * if ("ppc".equalsIgnoreCase(s1)) { this.field_92025_p = "" +
-		 * EnumChatFormatting.BOLD + "Notice!" + EnumChatFormatting.RESET +
-		 * " PowerPC compatibility will be dropped in Minecraft 1.6";
-		 * this.field_104024_v = "http://tinyurl.com/javappc"; } else if (s !=
-		 * null && s.startsWith("1.5")) { this.field_92025_p = "" +
-		 * EnumChatFormatting.BOLD + "Notice!" + EnumChatFormatting.RESET +
-		 * " Java 1.5 compatibility will be dropped in Minecraft 1.6";
-		 * this.field_104024_v = "http://tinyurl.com/javappc"; }
-		 */
 	}
-
-	/**
-	 * Called from the main game loop to update the screen.
-	 */
 	public void updateScreen() {
 		++this.panoramaTimer;
 	}
-
-	/**
-	 * Returns true if this GUI should pause the game when it is displayed in
-	 * single-player
-	 */
 	public boolean doesGuiPauseGame() {
 		return false;
 	}
-
-	/**
-	 * Fired when a key is typed. This is the equivalent of
-	 * KeyListener.keyTyped(KeyEvent e).
-	 */
 	protected void keyTyped(char par1, int par2) {
 	}
-
-	/**
-	 * Adds the buttons (and other controls) to the screen in question.
-	 */
 	public void initGui() {
 		this.viewportTexture = new DynamicTexture(256, 256);
 		this.field_110351_G = this.mc.getTextureManager()
 				.getDynamicTextureLocation("background", this.viewportTexture);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
-
-		/*
-		 * if (calendar.get(2) + 1 == 11 && calendar.get(5) == 9) {
-		 * this.splashText = "Happy birthday, ez!"; } else if (calendar.get(2) +
-		 * 1 == 6 && calendar.get(5) == 1) { this.splashText =
-		 * "Happy birthday, Notch!"; } else if (calendar.get(2) + 1 == 12 &&
-		 * calendar.get(5) == 24) { this.splashText = "Merry X-mas!"; } else if
-		 * (calendar.get(2) + 1 == 1 && calendar.get(5) == 1) { this.splashText
-		 * = "Happy new year!"; } else if (calendar.get(2) + 1 == 10 &&
-		 * calendar.get(5) == 31) { this.splashText = "OOoooOOOoooo! Spooky!"; }
-		 */
-
 		boolean flag = true;
 		int i = this.height / 4 + 48;
-
-		/*
-		 * if (this.mc.isDemo()) { this.addDemoButtons(i, 24); } else {
-		 */
 		this.addSingleplayerMultiplayerButtons(i, 24);
-		// }*/
 
 		this.addCustomizedButtons(i, 24);
 
@@ -220,11 +146,9 @@ public class NewMenu extends GuiScreen {
 					.getStringWidth(this.field_92025_p);
 			this.field_92024_r = this.fontRenderer
 					.getStringWidth(field_96138_a);
-			// int j = Math.max(this.field_92023_s, this.field_92024_r);
 			int j = this.width / 6 * 4;
 			this.field_92022_t = (this.width - j) / 2;
-			this.field_92021_u = i - 24;// ((GuiButton)this.buttonList.get(0)).yPosition
-										// - 24;
+			this.field_92021_u = i - 24;
 			this.field_92020_v = this.field_92022_t + j;
 			this.field_92019_w = this.field_92021_u + 24;
 		}
@@ -244,9 +168,6 @@ public class NewMenu extends GuiScreen {
 
 	private void addCustomizedButtons(int top, int split) {
 		int block = this.width / 6;
-
-		// this.buttonList.add(new GuiButton(20, block * 2 + 2, top, block - 2,
-		// 20, "自动配对线路"));
 		this.buttonList.add(new GuiButton(21, block * 2 + 2, top,
 				block * 3 / 2 - 2, 20, "电信入口"));
 		this.buttonList.add(new GuiButton(22, block * 7 / 2 + 2, top,
@@ -255,9 +176,6 @@ public class NewMenu extends GuiScreen {
 				block * 3 / 2 - 2, 20, "进入服务器官网"));
 		this.buttonList.add(new GuiButton(25, block * 7 / 2 + 2, top + split,
 				block * 3 / 2 - 2, 20, "进入Q群"));
-		//this.buttonList.add(new GuiButton(24, block * 4 + 2, top + split,
-		//		block * 1 - 2, 20, "联系服主"));
-
 		this.buttonList.add(new GuiButton(0, block * 3 + 2, top + 72 + 12,
 				block - 2, 20, I18n.getString("menu.options")));
 		this.buttonList.add(new GuiButton(4, block * 4 + 2, top + 72 + 12,
@@ -270,8 +188,6 @@ public class NewMenu extends GuiScreen {
 	private void drawAnnouncement() {
 		int i = this.height / 4 + 48;
 		int block = this.width / 6;
-
-		// drawRect(0, this.height - 50, 100, this.height, 1428160512);
 		drawRect(0, 0, this.width, 25, 1428160512);
 
 		String s2 = "", s3 = "  点击此处刷新";
@@ -284,8 +200,6 @@ public class NewMenu extends GuiScreen {
 			s2 += "或服务器响应错误";
 		}
 		drawCenteredString(fontRenderer, s2 + s3, this.width / 2, 15, 16777125);
-		// drawString(fontRenderer, s3, this.width -
-		// fontRenderer.getStringWidth(s3), 15, 16777125);
 
 		String s = "当前版本为" + EnumChatFormatting.YELLOW + MyUI.instance.version
 				+ EnumChatFormatting.RESET + ", 最新版本为"
@@ -308,67 +222,21 @@ public class NewMenu extends GuiScreen {
 			GLUtil.loadTexture(image);
 			GLUtil.drawTexture(this.field_92022_t - 2, i, block * 2, i + 24 * 3 - 4);
 		}
-		// GL11.glBindTexture(GL11.GL_TEXTURE_2D, textureID);
-		/*
-		 * GL11.glColor3f(255, 255, 255); GL11.glBegin(GL11.GL_QUADS);
-		 * GL11.glTexCoord2d(0, 0); GL11.glVertex2i(0, 0); GL11.glTexCoord2d(1,
-		 * 0); GL11.glVertex2i(0, 200); GL11.glTexCoord2d(1, 1);
-		 * GL11.glVertex2i(200, 200); GL11.glTexCoord2d(0, 1);
-		 * GL11.glVertex2i(200, 0); GL11.glEnd();
-		 */
 	}
-
-	/**
-	 * Adds Singleplayer and Multiplayer buttons on Main Menu for players who
-	 * have bought the game.
-	 */
 	private void addSingleplayerMultiplayerButtons(int par1, int par2) {
 		int block = this.width / 6;
 
 		this.buttonList.add(new GuiButton(1, block * 2 + 2, par1 + 72 + 12,
 				block - 2, 20, I18n.getString("menu.singleplayer")));
-		// this.buttonList.add(new GuiButton(2, block*2+2, par1 + par2 * 2,
-		// block-2, 20, I18n.getString("menu.multiplayer")));
-		// If Minecraft Realms is enabled, halve the size of both buttons and
-		// set them next to eachother.
 		fmlModButton = new GuiButton(6, block * 2 + 2, par1 + par2 * 2,
 				block * 3 - 2, 20, "模组");
 		this.buttonList.add(fmlModButton);
-
-		/*
-		 * minecraftRealmsButton = new GuiButton(14, this.width / 2 - 100, par1
-		 * + par2 * 2, I18n.getString("menu.online"));
-		 * minecraftRealmsButton.width = 98; minecraftRealmsButton.xPosition =
-		 * this.width / 2 - 100; this.buttonList.add(minecraftRealmsButton);
-		 * this.minecraftRealmsButton.drawButton = false;
-		 */
 	}
-
-	/**
-	 * Adds Demo buttons on Main Menu for players who are playing Demo.
-	 */
-	/*
-	 * private void addDemoButtons(int par1, int par2) { this.buttonList.add(new
-	 * GuiButton(11, this.width / 2 - 100, par1,
-	 * I18n.getString("menu.playdemo")));
-	 * this.buttonList.add(this.buttonResetDemo = new GuiButton(12, this.width /
-	 * 2 - 100, par1 + par2 * 1, I18n.getString("menu.resetdemo"))); ISaveFormat
-	 * isaveformat = this.mc.getSaveLoader(); WorldInfo worldinfo =
-	 * isaveformat.getWorldInfo("Demo_World");
-	 * 
-	 * if (worldinfo == null) { this.buttonResetDemo.enabled = false; } }
-	 */
-
 	public static void connectToServer(GuiScreen parent, String serverURL) {
 		Minecraft.getMinecraft().displayGuiScreen(
 				new GuiConnecting(parent, Minecraft.getMinecraft(),
 						new ServerData("Server", serverURL)));
 	}
-
-	/**
-	 * Fired when a control is clicked. This is the equivalent of
-	 * ActionListener.actionPerformed(ActionEvent e).
-	 */
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if (par1GuiButton.id == 0) {
 			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
@@ -471,10 +339,6 @@ public class NewMenu extends GuiScreen {
 			this.mc.displayGuiScreen(this);
 		}
 	}
-
-	/**
-	 * Draws the main menu panorama
-	 */
 	private void drawPanorama(int par1, int par2, float par3) {
 		Tessellator tessellator = Tessellator.instance;
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
@@ -560,10 +424,6 @@ public class NewMenu extends GuiScreen {
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 	}
-
-	/**
-	 * Rotate and blurs the skybox view in the main menu
-	 */
 	private void rotateAndBlurSkybox(float par1) {
 		this.mc.getTextureManager().bindTexture(this.field_110351_G);
 		GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, 256, 256);
@@ -593,10 +453,6 @@ public class NewMenu extends GuiScreen {
 		tessellator.draw();
 		GL11.glColorMask(true, true, true, true);
 	}
-
-	/**
-	 * Renders the skybox in the main menu
-	 */
 	private void renderSkybox(int par1, int par2, float par3) {
 		GL11.glViewport(0, 0, 256, 256);
 		this.drawPanorama(par1, par2, par3);
@@ -635,10 +491,6 @@ public class NewMenu extends GuiScreen {
 				(double) (0.5F + f2), (double) (0.5F + f3));
 		tessellator.draw();
 	}
-
-	/**
-	 * Draws the screen and all the components in it.
-	 */
 	public void drawScreen(int par1, int par2, float par3) {
 		
 		this.renderSkybox(par1, par2, par3);
@@ -667,18 +519,6 @@ public class NewMenu extends GuiScreen {
 		drawAnnouncement();
 
 		tessellator.setColorOpaque_I(16777215);
-		// GL11.glPushMatrix();
-		// GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
-		// GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
-		// float f1 = 1.8F -
-		// MathHelper.abs(MathHelper.sin((float)(Minecraft.getSystemTime() %
-		// 1000L) / 1000.0F * (float)Math.PI * 2.0F) * 0.1F);
-		// f1 = f1 * 100.0F /
-		// (float)(this.fontRenderer.getStringWidth(this.splashText) + 32);
-		// GL11.glScalef(f1, f1, f1);
-		// this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8,
-		// 16776960);
-		// GL11.glPopMatrix();
 
 		String s = "Minecraft 1.6.2";
 
@@ -709,11 +549,6 @@ public class NewMenu extends GuiScreen {
 		if (StringUtils.isNotBlank(this.field_92025_p)) {
 			drawRect(this.field_92022_t - 2, this.field_92021_u - 2,
 					this.field_92020_v + 2, this.field_92019_w - 1, 1428160512);
-			// this.drawCenteredString(this.fontRenderer, this.field_92025_p,
-			// this.field_92022_t, this.field_92021_u, 16777215);
-			// this.drawCenteredString(this.fontRenderer, field_96138_a,
-			// (this.width - this.field_92024_r) / 2,
-			// ((GuiButton)this.buttonList.get(0)).yPosition - 12, 16777215);
 			this.drawCenteredString(this.fontRenderer, this.field_92025_p,
 					this.width / 2, this.field_92021_u, 16777215);
 			this.drawCenteredString(this.fontRenderer, field_96138_a,
@@ -722,22 +557,8 @@ public class NewMenu extends GuiScreen {
 
 		super.drawScreen(par1, par2, par3);
 	}
-
-	/**
-	 * Called when the mouse is clicked.
-	 */
 	protected void mouseClicked(int par1, int par2, int par3) {
 		super.mouseClicked(par1, par2, par3);
-		/*
-		 * Object object = this.field_104025_t;
-		 * 
-		 * synchronized (this.field_104025_t) { if (this.field_92025_p.length()
-		 * > 0 && par1 >= this.field_92022_t && par1 <= this.field_92020_v &&
-		 * par2 >= this.field_92021_u && par2 <= this.field_92019_w) {
-		 * GuiConfirmOpenLink guiconfirmopenlink = new GuiConfirmOpenLink(this,
-		 * this.field_104024_v, 13, true); guiconfirmopenlink.func_92026_h();
-		 * this.mc.displayGuiScreen(guiconfirmopenlink); } }
-		 */
 
 		if (15 <= par2 && par2 < 25)
 			thread.run();
