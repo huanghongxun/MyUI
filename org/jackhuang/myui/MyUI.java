@@ -81,68 +81,6 @@ public class MyUI {
 		}
 	}
 
-	public void init() {
-		Property property = config.get("network", "url", "");
-		totalURL = property.getString();
-		property.comment = "服务器链接总地址";
-		property = config.get("version", "now", "");
-		version = property.getString();
-		property.comment = "客户端版本";
-		versionDouble = MD5Util.tryParseDouble(version, 1.0);
-
-		try {
-			String c = NetUtil.getNetContent(totalURL);
-			String[] s = c.split("\n");
-			for(String p : s) {
-				if(p.startsWith("#")) continue;
-				if(p.startsWith("url.announcement="))
-					announcementURL = getValue(p);
-				else if(p.startsWith("url.server1="))
-					serverURL1 = getValue(p);
-				else if(p.startsWith("url.server2="))
-					serverURL2 = getValue(p);
-				else if(p.startsWith("url.server3="))
-					serverURL3 = getValue(p);
-				else if(p.startsWith("url.picture="))
-					pictureURL = getValue(p);
-				else if(p.startsWith("url.announcement_picture="))
-					announcementPictureURL = getValue(p);
-				else if(p.startsWith("url.website="))
-					webiteURL = getValue(p);
-				else if(p.startsWith("url.contact="))
-					contactURL = getValue(p);
-				else if(p.startsWith("url.q_group="))
-					qGroupURL = getValue(p);
-				else if(p.startsWith("url.update="))
-					updateURL = getValue(p);
-				else if(p.startsWith("announcement.title="))
-					announcementTitle = getValue(p);
-				else if(p.startsWith("display.title="))
-					minecraftTitle = getValue(p);
-				else if(p.startsWith("version.newest="))
-					newestVersion = getValue(p);
-			}
-
-			try {
-				announcementContent = NetUtil.getNetContent(announcementURL);
-			} catch(Throwable t) {
-				t.printStackTrace();
-			}
-			
-			new Thread(new HttpDownloader(new URL(pictureURL), "announcement_picture.png", new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-				}
-			})).start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		config.save();
-	}
-
 	@EventHandler
 	public void preLoad(FMLPreInitializationEvent event) {
 		

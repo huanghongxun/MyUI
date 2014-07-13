@@ -640,6 +640,7 @@ public class NewMenu extends GuiScreen {
 	 * Draws the screen and all the components in it.
 	 */
 	public void drawScreen(int par1, int par2, float par3) {
+		
 		this.renderSkybox(par1, par2, par3);
 		Tessellator tessellator = Tessellator.instance;
 		short short1 = 274;
