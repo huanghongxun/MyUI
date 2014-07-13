@@ -1,26 +1,9 @@
-﻿package org.jackhuang.myui.util;
-
-import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketException;
-import java.util.Calendar;
-import java.util.TimeZone;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerAddress;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet254ServerPing;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatAllowedCharacters;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
+﻿/**
+ * MyUI Mod is under MIT License.
+ * READ THE LICENSE FIRST.
+ * @author huangyuhui
+ */
+package org.jackhuang.myui.util;
 
 public class LoadServerThread extends Thread {
 

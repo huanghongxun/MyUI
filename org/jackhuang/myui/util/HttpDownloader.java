@@ -1,12 +1,9 @@
+/**
+ * MyUI Mod is under MIT License.
+ * READ THE LICENSE FIRST.
+ * @author huangyuhui
+ */
 package org.jackhuang.myui.util;
-
-import java.awt.event.ActionListener;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import cpw.mods.fml.common.FMLLog;
 
 public class HttpDownloader implements Runnable {
     private static final int MAX_BUFFER_SIZE = 2048;

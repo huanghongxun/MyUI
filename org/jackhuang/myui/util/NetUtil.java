@@ -1,20 +1,9 @@
+/**
+ * MyUI Mod is under MIT License.
+ * READ THE LICENSE FIRST.
+ * @author huangyuhui
+ */
 package org.jackhuang.myui.util;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import cpw.mods.fml.client.FMLClientHandler;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.multiplayer.GuiConnecting;
-import net.minecraft.client.multiplayer.ServerData;
 
 public class NetUtil {
 	

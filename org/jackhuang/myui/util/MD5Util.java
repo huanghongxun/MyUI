@@ -1,18 +1,9 @@
+﻿/**
+ * MyUI Mod is under MIT License.
+ * READ THE LICENSE FIRST.
+ * @author huangyuhui
+ */
 package org.jackhuang.myui.util;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MD5Util {
 	/**

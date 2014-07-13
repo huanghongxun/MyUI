@@ -1,14 +1,9 @@
+﻿/**
+ * MyUI Mod is under MIT License.
+ * READ THE LICENSE FIRST.
+ * @author huangyuhui
+ */
 package org.jackhuang.myui;
-
-import java.util.List;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-
-import cpw.mods.fml.client.FMLClientHandler;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.resources.I18n;
-
 
 public class CopyrightScreen extends GuiScreen {
 	private GuiScreen parent;

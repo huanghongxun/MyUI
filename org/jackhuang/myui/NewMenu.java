@@ -1,56 +1,10 @@
-﻿package org.jackhuang.myui;
+﻿/**
+ * MyUI Mod is under MIT License.
+ * READ THE LICENSE FIRST.
+ * @author huangyuhui
+ */
+package org.jackhuang.myui;
 
-import cpw.mods.fml.client.GuiModList;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-
-import net.minecraft.client.gui.*;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.mco.ExceptionMcoService;
-import net.minecraft.client.mco.GuiScreenClientOutdated;
-import net.minecraft.client.mco.McoClient;
-import net.minecraft.client.multiplayer.GuiConnecting;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.demo.DemoWorldServer;
-import net.minecraft.world.storage.ISaveFormat;
-import net.minecraft.world.storage.WorldInfo;
-
-import org.apache.commons.io.Charsets;
-import org.apache.commons.lang3.StringUtils;
-import org.jackhuang.myui.MyUI;
-import org.jackhuang.myui.util.GLUtil;
-import org.jackhuang.myui.util.LoadServerThread;
-import org.jackhuang.myui.util.MD5Util;
-import org.jackhuang.myui.util.NetUtil;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.glu.Project;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-
-@SideOnly(Side.CLIENT)
 public class NewMenu extends GuiScreen {
 	private static final Random rand = new Random();
 	private float updateCounter;
