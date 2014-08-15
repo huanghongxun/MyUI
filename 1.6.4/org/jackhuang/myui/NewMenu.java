@@ -1,9 +1,8 @@
 ﻿/**
  * Copyright (c) Huang Yuhui, 2014
  * 
- * "MyUI" is distributed under the terms of the Minecraft Mod Public
- * License 1.0, or MMPL. Please check the contents of the license located in
- * http://www.mod-buildcraft.com/MMPL-1.0.txt
+ * "MyUI" is distributed under the MIT License.
+ * Please check the contents of the license.
  */
 package org.jackhuang.myui;
 
@@ -40,8 +39,6 @@ public class NewMenu extends GuiScreen {
 	private ResourceLocation field_110351_G;
 	private GuiButton minecraftRealmsButton;
 	private GuiButton fmlModButton = null;
-	private GuiButton server1, server2, server3, website;
-	private LoadServerThread thread;
 	public NewMenu() {
 		BufferedReader bufferedreader = null;
 		String s;
