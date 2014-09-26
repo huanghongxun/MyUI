@@ -1,8 +1,9 @@
 /**
  * Copyright (c) Huang Yuhui, 2014
  * 
- * "MyUI" is distributed under the MIT License.
- * Please check the contents of the license.
+ * This code is the property of huanghongxun
+ * and may not be used with explicit written
+ * permission.
  */
 package org.jackhuang.myui.util;
 
